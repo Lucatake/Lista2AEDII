@@ -143,5 +143,15 @@ public class CPilha {
 		this.topo = nova.topo;
 		this.qtde = nova.qtde;
 	}
+	
+	/**
+	 * Clona a pilha.
+	*/
+	public CPilha clone() {
+		CPilha clone = new CPilha();
+		for (CCelula c = topo; c != null; c = c.prox)
+			clone.empilha(c.item);
+		return clone;
+	}
 
 }

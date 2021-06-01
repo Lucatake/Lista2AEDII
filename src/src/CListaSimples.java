@@ -3,18 +3,22 @@ package src;
 /**
 *
 * @author Luana Campos Takeishi
-* @version 1.00 2021/5/30
+* @version 1.00 2021/6/01
 * 
 */
+class CCelulaSimples {
+	public Object item;
+	public CCelulaSimples prox;
+}
 
 public class CListaSimples {
-	private CCelula primeira, ultima;
+	private CCelulaSimples primeira, ultima;
 	
 	/**
 	 * Função Construtora.
 	*/
 	public CListaSimples() {
-		primeira = ultima = null;
+		//Vazio
 	}
 	
 	/**
@@ -23,15 +27,18 @@ public class CListaSimples {
 	 * @return false - se contem elementos.
 	*/
 	public boolean vazia() {
-		return primeira == null && ultima == null;
+		return primeira == ultima;
 	}
 	
 	/**
 	 * Método que insere o elemento no começo.
 	 * @param valorItem - item a ser inserido.
 	*/
-	public void insereComeco(Object valorItem) {
-		primeira = new CCelula(valorItem, primeira);
+	public void insereComeco(Object valorItem) {		
+		CCelulaSimples aux = new CCelulaSimples();
+		aux.item = valorItem; 
+		aux.prox = primeira;
+		primeira = aux;
 		if (primeira.prox == null)
 			ultima = primeira;
 	}
@@ -42,10 +49,8 @@ public class CListaSimples {
 	*/
 	public Object removeComeco(){
 		if (primeira != ultima) {
-			CCelula aux = primeira;
+			CCelulaSimples aux = primeira;
 			primeira = aux.prox;
-			if (primeira == null) 
-				ultima = primeira;
 			return aux.item;
 		}
 		return null;
@@ -56,12 +61,9 @@ public class CListaSimples {
 	 * @param valorItem - item a ser inserido.
 	*/
 	public void insereFim(Object valorItem) {
-		if(primeira == null)
-			primeira = ultima = new CCelula(valorItem);
-		else {
-			ultima.prox = new CCelula(valorItem);
-			ultima = ultima.prox;
-		}
+		ultima.prox = new CCelulaSimples();
+		ultima.prox.item = valorItem;
+		ultima = ultima.prox;
 	}
 	
 	/**
@@ -70,10 +72,10 @@ public class CListaSimples {
 	*/
 	public Object removeFim() {
 		if (primeira != ultima) {
-			CCelula aux = primeira;
+			CCelulaSimples aux = primeira;
 			while (aux.prox != ultima)
 				aux = aux.prox;
-			CCelula aux2 = aux.prox;
+			CCelulaSimples aux2 = aux.prox;
 			ultima = aux;
 			ultima.prox = null;
 			return aux2.item;
@@ -85,7 +87,7 @@ public class CListaSimples {
 	 * Método que imprime a lista.
 	*/
 	public void imprime() {
-		for (CCelula aux = primeira; aux != null; aux = aux.prox)
+		for (CCelulaSimples aux = primeira; aux != null; aux = aux.prox)
 			System.out.print(aux.item + " ");
 		System.out.println("");
 	}
@@ -98,7 +100,7 @@ public class CListaSimples {
 	*/
 	public boolean contem(Object elemento){
 		boolean contem = false;
-		for (CCelula aux = primeira; aux != null && !contem; aux = aux.prox)
+		for (CCelulaSimples aux = primeira; aux != null && !contem; aux = aux.prox)
 			contem = elemento.equals(aux.item);
 		return contem;
 	}

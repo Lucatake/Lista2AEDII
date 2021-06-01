@@ -36,41 +36,40 @@ public class Lista {
 	 * @param L1 - fila duplamente encadeada 1
 	 * @param L2 - fila duplamente encadeada 2
 	 * @return L2 - fila duplamente encadeada resultado da concatenação
-	
+	**/
 	public static CFila ConcatenaFila(CFila F1, CFila F2) {
-		CFila L3 = new CFila();
+		CFila F3 = new CFila();
 		//Concatena L1
-		
-		for (Object aux1 = Faux1.desenfileira(); aux1 != null; aux1 = Faux1.desenfileira())
-			L3.enfileira(aux1);
+		int i = 1;
+		for (Object aux1 = F1.retornaIndice(i); aux1 != null; aux1 = F1.retornaIndice(++i))
+			F3.enfileira(aux1);
 		//Concatena L2
-		CFila Faux2 = new CFila();
-		Faux2 = F2;
-		for (Object aux2 = Faux2.desenfileira(); aux2 != null; aux2 = Faux2.desenfileira())
-			L3.enfileira(aux2);
-		return L3;
-	}**/
+		i = 1;
+		for (Object aux2 = F2.retornaIndice(i); aux2 != null; aux2 = F2.retornaIndice(++i))
+			F3.enfileira(aux2);
+		return F3;
+	}
 	
 	
 	/**
 	 * Função apara concatenar duas pilhas - Exercício 6
 	 * Concatena as pilhas duplamente encadeadas passadas por parâmetro retornando o resultado.
-	 * @param L1 - pilha duplamente encadeada 1
-	 * @param L2 - pilha duplamente encadeada 2
-	 * @return L2 - pilha duplamente encadeada resultado da concatenação
-	
+	 * @param P1 - pilha duplamente encadeada 1
+	 * @param P2 - pilha duplamente encadeada 2
+	 * @return result - pilha duplamente encadeada resultado da concatenação
+	**/
 	public static CPilha ConcatenaPilha(CPilha P1, CPilha P2) {
-		CPilha L3 = new CPilha();
-		//Concatena L1
-		int i = 1;
-		for (Object aux1 = L1.retornaIndice(i); aux1 != null; aux1 = L1.retornaIndice(++i))
-			L3.empilha(aux1);
-		//Concatena L2
-		i = 1;
-		for (Object aux2 = L2.retornaIndice(i); aux2 != null; aux2 = L2.retornaIndice(++i))
-			L3.empilha(aux2);
-		return L3;
-	}**/
+		CPilha P3 = P1.clone();
+		CPilha P4 = P2.clone();
+		CPilha result = new CPilha();
+		//Concatena P1
+		for (Object aux1 = P3.desempilha(); aux1 != null; aux1 = P3.desempilha())
+			result.empilha(aux1);
+		//Concatena P2
+		for (Object aux2 = P4.desempilha(); aux2 != null; aux2 = P4.desempilha())
+			result.empilha(aux2);
+		return result;
+	}
 	
 	
 	
@@ -302,6 +301,8 @@ public class Lista {
 			System.out.print(vector[i]+" ");
 		System.out.println("}");*/
 		
+		//Exercicio 17 - CListaDup
+		
 		
 		
 		//Exercicio 30 - CCelulaDicionario e CDicionario
@@ -383,6 +384,7 @@ public class Lista {
 		System.out.println("Lista apos remover:");
 		ls.imprime();
 		System.out.println("Lista vazia? " + ls.vazia());*/
+		
 		
 		scan.close();
 	}

@@ -184,4 +184,15 @@ public class CFila {
 		this.qtde = nova.qtde;
 	}
 
+	/**
+	 * Retorna o Item contido na posição passada por parâmetro.
+	*/
+	public Object retornaIndice(int posicao) {
+		if ((posicao >= 1) && (posicao <= qtde) && (frente != tras)) {
+			CCelula aux = frente.prox;
+			for (int i = 1; i < posicao; i++, aux = aux.prox);
+				return aux.item;
+		}
+		return null;
+	}
 }
