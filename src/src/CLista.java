@@ -422,4 +422,13 @@ public class CLista {
 		return vector;
 	}
 	
+	/**
+	 * Método limpa a Lista.
+	**/
+	public void Limpar() {
+		primeira.prox = null;
+		ultima = primeira;
+		qtde = 0;
+	}
+	
 }

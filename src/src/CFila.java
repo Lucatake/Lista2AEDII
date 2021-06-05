@@ -195,4 +195,37 @@ public class CFila {
 		}
 		return null;
 	}
+	
+	/**
+	 * Método que clona a Fila.
+	*/
+	public CFila clone() {
+		CFila clone = new CFila();
+		for (CCelula aux = frente.prox; aux != null; aux = aux.prox)
+			clone.enfileira(aux.item);
+		return clone;
+	}
+	
+	/**
+	 * Método limpa a Fila.
+	**/
+	public void Limpar() {
+		frente.prox = null;
+		tras = frente;
+		qtde = 0;
+	}
+	
+	/**
+	 * Função construtora a partir de um vetor.
+	 * @param VET - vetor de objetos para construir a fila.
+	**/
+	CFila (Object[] VET){
+		frente = new CCelula();
+		tras = frente;
+		for(int i = 0; i < VET.length; i++) {
+			tras.prox = new CCelula(VET[i]);
+			tras = tras.prox;
+			qtde++;
+		}
+	}
 }

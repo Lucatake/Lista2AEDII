@@ -59,8 +59,8 @@ public class Lista {
 	 * @return result - pilha duplamente encadeada resultado da concatenação
 	**/
 	public static CPilha ConcatenaPilha(CPilha P1, CPilha P2) {
-		CPilha P3 = P1.clone();
-		CPilha P4 = P2.clone();
+		CPilha P3 = P1.cloneI();
+		CPilha P4 = P2.cloneI();
 		CPilha result = new CPilha();
 		//Concatena P1
 		for (Object aux1 = P3.desempilha(); aux1 != null; aux1 = P3.desempilha())
@@ -71,6 +71,32 @@ public class Lista {
 		return result;
 	}
 	
+	
+	/**
+	 * Função para inverter uma pilha - Exercício 18
+	 * Inverte a pilha P recebida como parâmetro.
+	 * @param P - pilha a ser invertida
+	**/
+	public static void InvertePilha(CPilha P) {
+		CPilha Pc = P.clone();
+		for (Object aux = P.desempilha(); aux != null; aux = P.desempilha());
+		for (Object aux = Pc.desempilha(); aux != null; aux = Pc.desempilha())
+			P.empilha(aux);
+	}
+	
+	/**
+	 * Função para inverter uma fila - Exercício 19
+	 * Inverte a fila F recebida como parâmetro.
+	 * @param F - fila a ser invertida
+	**/
+	public static void InverteFila(CFila F) {
+		CFila Fc = F.clone();
+		//Poderia ser substituido pelo Limpar da questão 20
+		for (Object aux = F.desenfileira(); aux != null; aux = F.desenfileira());
+		int i = Fc.quantidade();
+		for (Object aux1 = Fc.retornaIndice(i); aux1 != null; aux1 = Fc.retornaIndice(--i))
+			F.enfileira(aux1);
+	}
 	
 	
 	public static void main(String[] args) {
@@ -302,6 +328,73 @@ public class Lista {
 		System.out.println("}");*/
 		
 		//Exercicio 17 - CListaDup
+		/*System.out.println("Exercicio 17 - CListaDup");
+		Object[] vet = {0,1,2,3,4,5,6};
+		System.out.print("Vetor base: ");
+		for(int i = 0; i < vet.length; i++)
+			System.out.print(vet[i]+" ");
+		CListaDup lvet = new CListaDup(vet);
+		lvet.imprimeFormatoLista("\nLista criada a partir do vetor:");*/
+		
+		//Exercicio 18 - CPilha
+		/*System.out.println("Exercicio 18 - CPilha");
+		CPilha P = new CPilha();
+		for(int i = 0; i <= 5; i++)
+			P.empilha(i);
+		P.imprimeFormatoPilha("Pilha");		InvertePilha(P);
+		P.imprimeFormatoPilha("Pilha Invertida");*/
+		
+		//Exercicio 19 - CFila
+		/*System.out.println("Exercicio 19 - CFila");
+		CFila F = new CFila();
+		for(int i = 0; i <= 5; i++)
+			F.enfileira(i);
+		F.imprimeFormatoFila("Fila");
+		InverteFila(F);
+		F.imprimeFormatoFila("Fila Invertida");*/
+		
+		//Exercicio 20 - CLista | CListaDup | CFila | CPilha
+		/*System.out.println("Exercicio 20 - CLista | CListaDup | CFila | CPilha");
+		CLista Ll = new CLista();
+		for(int i = 0; i <= 5; i++)
+			Ll.insereFim(i);
+		CListaDup LDl = new CListaDup();
+		for(int i = 0; i <= 5; i++)
+			LDl.insereFim(i);	
+		CFila Fl = new CFila();
+		for(int i = 0; i <= 5; i++)
+			Fl.enfileira(i);
+		CPilha Pl = new CPilha();
+		for(int i = 0; i <= 5; i++)
+			Pl.empilha(i);		
+		Ll.imprimeFormatoLista("---Lista");
+		System.out.println("Lista vazia? " + Ll.vazia());
+		LDl.imprimeFormatoLista("---Lista Dupla");
+		System.out.println("Lista Dupla vazia? " + LDl.vazia());
+		Fl.imprimeFormatoFila("---Fila");
+		System.out.println("Fila vazia? " + Fl.vazia());
+		Pl.imprimeFormatoPilha("---Pilha");
+		System.out.println("Pilha vazia? " + Pl.vazia());		
+		Ll.Limpar();
+		LDl.Limpar();
+		Fl.Limpar();
+		Pl.Limpar();		
+		Ll.imprimeFormatoLista("\n---Lista Limpa");
+		System.out.println("Lista vazia? " + Ll.vazia());
+		LDl.imprimeFormatoLista("---Lista Dupla Limpa");
+		System.out.println("Lista Dupla vazia? " + LDl.vazia());
+		Fl.imprimeFormatoFila("---Fila Limpa");
+		System.out.println("Fila vazia? " + Fl.vazia());
+		Pl.imprimeFormatoPilha("---Pilha Limpa");
+		System.out.println("Pilha vazia? " + Pl.vazia());*/
+		
+		//Exercicio 21 - CFila
+		Object[] vet = {0,1,2,3,4,5,6};
+		System.out.print("Vetor base: ");
+		for(int i = 0; i < vet.length; i++)
+			System.out.print(vet[i]+" ");
+		CFila fvet = new CFila(vet);
+		fvet.imprimeFormatoFila("\nFila criada a partir do vetor:");
 		
 		
 		

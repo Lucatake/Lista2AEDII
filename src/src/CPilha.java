@@ -123,7 +123,7 @@ public class CPilha {
 					System.out.println("[ " + c.item + " ]");
 				System.out.println("  | ");
 				System.out.println("  v ");
-				System.out.println("null\n");
+				System.out.println("null");
 			}
 
 	/**
@@ -145,13 +145,33 @@ public class CPilha {
 	}
 	
 	/**
-	 * Clona a pilha.
+	 * Clona a pilha invertida.
 	*/
-	public CPilha clone() {
+	public CPilha cloneI() {
 		CPilha clone = new CPilha();
 		for (CCelula c = topo; c != null; c = c.prox)
 			clone.empilha(c.item);
 		return clone;
 	}
-
+	
+	/**
+	 * Clona a pilha.
+	*/
+	public CPilha clone() {
+		CPilha clone = new CPilha();
+		CPilha cloneI = new CPilha();
+		for (CCelula c = topo; c != null; c = c.prox)
+			cloneI.empilha(c.item);
+		for (CCelula c = cloneI.topo; c != null; c = c.prox)
+			clone.empilha(c.item);
+		return clone;
+	}
+	
+	/**
+	 * Método limpa a Pilha.
+	**/
+	public void Limpar() {
+		topo = null;
+		qtde = 0;
+	}
 }

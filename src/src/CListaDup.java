@@ -296,4 +296,30 @@ class CListaDup {
 			qtde--;
 		}
 	}
+	
+	/**
+	 * Função construtora a partir de um vetor.
+	 * @param VET - vetor de objetos para construir a lista.
+	**/
+	CListaDup(Object[] VET){
+		primeira = new CCelulaDup();
+		ultima = primeira;
+		for(int i = 0; i < VET.length; i++) {
+			ultima.prox = new CCelulaDup(VET[i], ultima, null);
+			ultima = ultima.prox;
+			qtde++;
+		}
+	}
+	
+	/**
+	 * Método limpa a Lista Dupla.
+	**/
+	public void Limpar() {
+		primeira.prox = null;
+		ultima = primeira;
+		qtde = 0;
+	}
+	
+	
+	
 }
